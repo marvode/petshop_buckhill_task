@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Contracts\V1\IdentityContract;
 use App\Interfaces\JwtServiceInterface;
 use App\Services\JwtService;
 use Illuminate\Support\ServiceProvider;
+use App\Services\V1\IdentityService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(JwtServiceInterface::class, JwtService::class);
+        $this->app->bind(IdentityContract::class, IdentityService::class);
+        $this->app->bind(JwtServiceInterface::class, JwtService::class);
     }
 
     /**

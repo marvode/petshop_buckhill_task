@@ -58,7 +58,7 @@ class Handler extends ExceptionHandler
             //
         });
     }
-    
+
     public function render($request, Throwable $exception): Response
     {
         if (!$request->is('api/*'))
@@ -76,7 +76,7 @@ class Handler extends ExceptionHandler
             return $this->unauthenticated($request, $exception);
 
         if ($exception instanceof AuthorizationException)
-            return $this->errorResponse($exception->getMessage(), 403);
+            return $this->errorResponse([$exception->getMessage()], 403);
 
         if ($exception instanceof NotFoundHttpException)
             return $this->errorResponse(['The specified URL cannot be found'], 404);
@@ -110,6 +110,7 @@ class Handler extends ExceptionHandler
 
     protected function unauthenticated($request, AuthenticationException $exception): Response
     {
-        return $this->errorResponse(['Unauthenticated'], 401);
+        $message = $exception->getMessage() ?? 'Unauthenticated';
+        return $this->errorResponse([$message], 401);
     }
 }

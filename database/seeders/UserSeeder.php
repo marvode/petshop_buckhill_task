@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'last_name' => 'User',
             'email' => 'admin@buckhill.co.uk',
             'password' => Hash::make('admin'),
-            'is_admin' => true,
+            'is_admin' => 1,
         ]);
 
         User::factory()->create([
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
             'last_name' => 'User',
             'email' => 'regular@user.com',
             'password' => Hash::make('password'),
-            'is_admin' => 'false',
+            'is_admin' => 0,
         ]);
     }
 }
