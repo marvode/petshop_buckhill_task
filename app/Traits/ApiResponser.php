@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 trait ApiResponser
 {
-    private function successResponse(array $data, int $code): Response
+    protected function successResponse(array $data, int $code = 200): Response
     {
         return response()->json($data, $code);
     }
@@ -20,6 +20,7 @@ trait ApiResponser
             $code
         );
     }
+
     protected function showAll(array|Collection $collection, int $code = 200): Response
     {
         return $this->successResponse(['data' => $collection], $code);
