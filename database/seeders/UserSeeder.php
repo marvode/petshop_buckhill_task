@@ -21,6 +21,15 @@ class UserSeeder extends Seeder
             'last_name' => 'User',
             'email' => 'admin@buckhill.co.uk',
             'password' => Hash::make('admin'),
+            'is_admin' => true,
+        ]);
+
+        User::factory()->create([
+            'first_name' => 'Regular',
+            'last_name' => 'User',
+            'email' => 'regular@user.com',
+            'password' => Hash::make('password'),
+            'is_admin' => 'false',
         ]);
     }
 }
