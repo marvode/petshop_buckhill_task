@@ -54,6 +54,29 @@
                 "security": []
             }
         },
+        "/api/v1/admin/logout": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Logout",
+                "description": "Logout the authenticated admin user",
+                "operationId": "b310202930eebb9f48335f26e31d2989",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/v1/user/login": {
             "post": {
                 "tags": [
