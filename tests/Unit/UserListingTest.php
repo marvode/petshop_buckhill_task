@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\User;
-use App\Services\V1\UserManagementService;
+use App\Services\V1\AdminUserManagementService;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -12,13 +12,13 @@ class UserListingTest extends TestCase
 {
     use RefreshDatabase;
 
-    private UserManagementService $userManagementService;
+    private AdminUserManagementService $userManagementService;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->userManagementService = app(UserManagementService::class);
+        $this->userManagementService = app(AdminUserManagementService::class);
     }
 
     public function test_can_get_all_regular_users_with_filters_and_pagination_as_admin()

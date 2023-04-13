@@ -4,11 +4,9 @@ namespace App\Providers;
 
 use App\Contracts\V1\AdminUserManagementContract;
 use App\Contracts\V1\IdentityContract;
-use App\Contracts\V1\UserManagementContract;
 use App\Interfaces\JwtServiceInterface;
 use App\Services\JwtService;
 use App\Services\V1\AdminUserManagementService;
-use App\Services\V1\UserManagementService;
 use Illuminate\Support\ServiceProvider;
 use App\Services\V1\IdentityService;
 
@@ -21,7 +19,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(IdentityContract::class, IdentityService::class);
         $this->app->bind(JwtServiceInterface::class, JwtService::class);
-        $this->app->bind(UserManagementContract::class, UserManagementService::class);
         $this->app->bind(AdminUserManagementContract::class, AdminUserManagementService::class);
     }
 

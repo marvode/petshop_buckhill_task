@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1\Admin;
 
-use App\Contracts\V1\UserManagementContract;
+use App\Contracts\V1\AdminUserManagementContract;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\UserResource;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ use OpenApi\Annotations as OA;
 
 class UserListingController extends Controller
 {
-    public function __construct(protected UserManagementContract $userManagementService)
+    public function __construct(protected AdminUserManagementContract $userManagementService)
     {
     }
 
