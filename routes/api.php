@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix' => '/v1/user'], function () {
-    Route::post('/login', UserLoginController::class);
+    Route::post('/login', UserLoginController::class)->name('user.login');
 
     Route::group(['middleware' => ['auth.jwt', 'user']], function () {
-        Route::middleware('auth.jwt')->get('/logout', UserLogoutController::class);
+        Route::middleware('auth.jwt')->get('/logout', UserLogoutController::class)->name('user.logout');
     });
 });
