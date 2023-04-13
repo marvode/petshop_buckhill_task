@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\V1\Admin\AdminLoginController;
+use App\Http\Controllers\Api\V1\Admin\AdminLogoutController;
+use App\Http\Controllers\Api\V1\Admin\AdminRegistrationController;
 use App\Http\Controllers\Api\V1\Admin\UserListingController;
 use App\Http\Controllers\Api\V1\User\UserLoginController;
 use App\Http\Controllers\Api\V1\User\UserLogoutController;
@@ -29,8 +31,10 @@ Route::group(['prefix' => '/v1/user'], function () {
 
 Route::group(['prefix' => '/v1/admin'], function () {
     Route::post('/login', AdminLoginController::class)->name('admin.login');
+    Route::post('/create', AdminRegistrationController::class)->name('admin.create');
 
     Route::group(['middleware' => ['auth.jwt', 'admin']], function () {
+        Route::get('/logout', AdminLogoutController::class)->name('admin.logout');
         Route::get('/user-listing', UserListingController::class)->name('admin.user-listing');
     });
 });

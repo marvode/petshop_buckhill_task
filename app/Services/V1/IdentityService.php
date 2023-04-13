@@ -3,9 +3,12 @@
 namespace App\Services\V1;
 
 use App\Contracts\V1\IdentityContract;
+use App\DataTransferObjects\AdminRegisterDto;
 use App\DataTransferObjects\LoginDto;
 use App\DataTransferObjects\UserRegisterDto;
 use App\Interfaces\JwtServiceInterface;
+use App\Models\AdminUser;
+use App\Models\RegularUser;
 use App\Models\User;
 use App\Results\LoginResult;
 use Illuminate\Auth\AuthenticationException;
@@ -58,11 +61,23 @@ class IdentityService implements IdentityContract
         Auth::user()->jwtToken()->delete();
     }
 
-    public function userRegisteration(UserRegisterDto $userDetails): User
+    public function userRegisteration(UserRegisterDto $userDetails): RegularUser
     {
-        $user = User::create([
+        $user = RegularUser::create([
             ...(array) $userDetails,
             'password' => Hash::make($userDetails->password),
+            'is_admin' => 0,
+        ]);
+
+        return $user;
+    }
+
+    public function adminRegisteration(AdminRegisterDto $details): AdminUser
+    {
+        $user = AdminUser::create([
+            ...(array) $details,
+            'password' => Hash::make($details->password),
+            'is_admin' => 1,
         ]);
 
         return $user;
