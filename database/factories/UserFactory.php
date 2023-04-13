@@ -27,7 +27,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => Hash::make('userpassword'),
             'address' => fake()->address(),
-            'phone' => fake()->phoneNumber(),
+            'phone_number' => fake()->phoneNumber(),
             'is_marketing' => fake()->boolean(),
             'avatar' => File::factory()->create()->uuid,
         ];

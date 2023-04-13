@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('avatar')->nullable();
             $table->string('address');
-            $table->string('phone');
-            $table->string('is_marketing')->default(0);
+            $table->string('phone_number');
+            $table->boolean('is_marketing')->default(0);
             $table->timestamps();
             $table->timestamp('last_login_at')->nullable();
 
