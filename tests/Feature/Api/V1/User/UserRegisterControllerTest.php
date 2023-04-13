@@ -19,7 +19,7 @@ class UserRegistrationControllerTest extends TestCase
      *
      * @return void
      */
-    public function testUserRegistration(): void
+    public function test_user_registration_successful(): void
     {
         $this->withoutExceptionHandling();
 
