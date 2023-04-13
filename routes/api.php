@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\Admin\AdminLoginController;
 use App\Http\Controllers\Api\V1\Admin\AdminLogoutController;
 use App\Http\Controllers\Api\V1\Admin\AdminRegistrationController;
+use App\Http\Controllers\Api\V1\Admin\UserEditController;
 use App\Http\Controllers\Api\V1\Admin\UserListingController;
 use App\Http\Controllers\Api\V1\User\UserLoginController;
 use App\Http\Controllers\Api\V1\User\UserLogoutController;
@@ -36,5 +37,7 @@ Route::group(['prefix' => '/v1/admin'], function () {
     Route::group(['middleware' => ['auth.jwt', 'admin']], function () {
         Route::get('/logout', AdminLogoutController::class)->name('admin.logout');
         Route::get('/user-listing', UserListingController::class)->name('admin.user-listing');
+
+        Route::put('/user-edit/{uuid}', UserEditController::class)->name('admin.user-edit');
     });
 });
