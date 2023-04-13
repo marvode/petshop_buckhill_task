@@ -4,12 +4,14 @@ namespace App\Services\V1;
 
 use App\Contracts\V1\IdentityContract;
 use App\DataTransferObjects\LoginDto;
+use App\DataTransferObjects\UserRegisterDto;
 use App\Interfaces\JwtServiceInterface;
 use App\Models\User;
 use App\Results\LoginResult;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 class IdentityService implements IdentityContract
 {
@@ -54,5 +56,15 @@ class IdentityService implements IdentityContract
     public function logout(): void
     {
         Auth::user()->jwtToken()->delete();
+    }
+
+    public function userRegisteration(UserRegisterDto $userDetails): User
+    {
+        $user = User::create([
+            ...(array) $userDetails,
+            'password' => Hash::make($userDetails->password),
+        ]);
+
+        return $user;
     }
 }
