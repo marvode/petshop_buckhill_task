@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\Admin\AdminLoginController;
 use App\Http\Controllers\Api\V1\Admin\AdminLogoutController;
 use App\Http\Controllers\Api\V1\Admin\AdminRegistrationController;
+use App\Http\Controllers\Api\V1\Admin\UserDeleteController;
 use App\Http\Controllers\Api\V1\Admin\UserEditController;
 use App\Http\Controllers\Api\V1\Admin\UserListingController;
 use App\Http\Controllers\Api\V1\User\UserLoginController;
@@ -39,5 +40,6 @@ Route::group(['prefix' => '/v1/admin'], function () {
         Route::get('/user-listing', UserListingController::class)->name('admin.user-listing');
 
         Route::put('/user-edit/{uuid}', UserEditController::class)->name('admin.user-edit');
+        Route::delete('/user-delete/{uuid}', UserDeleteController::class)->name('admin.user-delete');
     });
 });
