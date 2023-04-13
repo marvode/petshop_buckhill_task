@@ -24,6 +24,7 @@ class UserDeleteController extends Controller
      *     tags={"Admin"},
      *     summary="Delete a User account",
      *     description="Deletes a User account by UUID",
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
      *         name="uuid",
      *         in="path",

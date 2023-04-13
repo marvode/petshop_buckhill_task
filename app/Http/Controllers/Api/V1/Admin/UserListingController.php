@@ -21,6 +21,7 @@ class UserListingController extends Controller
      *     tags={"Admin"},
      *     summary="List all users",
      *     operationId="admin-user-listing",
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
      *         name="page",
      *         in="query",

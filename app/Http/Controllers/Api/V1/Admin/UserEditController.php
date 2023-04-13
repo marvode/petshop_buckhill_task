@@ -22,6 +22,7 @@ class UserEditController extends Controller
      *     tags={"Admin"},
      *     summary="Edit a User account",
      *     description="Edit a User account",
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
      *         name="uuid",
      *         in="path",
