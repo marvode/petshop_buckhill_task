@@ -58,7 +58,7 @@ class UserLoginController extends Controller
      */
     public function __invoke(LoginRequest $request): LoginResource
     {
-        $credentials = LoginDto::fromRequest($request);
+        $credentials = LoginDto::fromRequest($request, false);
 
         $result = $this->identityService->login($credentials);
 

@@ -15,13 +15,16 @@ class IdentityService implements IdentityContract
 {
     private JwtServiceInterface $jwtService;
 
-    public function __construct(JwtServiceInterface $jwtService){
+    public function __construct(JwtServiceInterface $jwtService)
+    {
         $this->jwtService = $jwtService;
     }
 
     public function login(LoginDto $credentials): LoginResult
     {
-        $user = User::where('email', $credentials->email)->first();
+        $user = User::where('is_admin', $credentials->is_admin)
+            ->where('email', $credentials->email)
+            ->first();
 
         if ($user === null) {
             throw new AuthenticationException('invalid credentials');
