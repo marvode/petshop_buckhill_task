@@ -7,7 +7,7 @@ use App\DataTransferObjects\UserEditDto;
 use App\Models\RegularUser;
 use Illuminate\Support\Facades\Hash;
 
-class UserAccountManagement implements UserAccountManagementContract
+class UserAccountManagementServices implements UserAccountManagementContract
 {
     public function edit(UserEditDto $details, string $loggedInUserUuid): RegularUser
     {
@@ -23,6 +23,13 @@ class UserAccountManagement implements UserAccountManagementContract
             'avatar' => $details->avatar,
             'is_marketing' => $details->is_marketing,
         ]);
+
+        return $user;
+    }
+
+    public function show(string $loggedInUserUuid): RegularUser
+    {
+        $user = RegularUser::where('uuid', $loggedInUserUuid)->firstOrFail();
 
         return $user;
     }

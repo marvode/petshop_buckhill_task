@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\V1\User\UserEditController as RegularUserEditContro
 use App\Http\Controllers\Api\V1\User\UserLoginController;
 use App\Http\Controllers\Api\V1\User\UserLogoutController;
 use App\Http\Controllers\Api\V1\User\UserRegistrationController;
+use App\Http\Controllers\Api\V1\User\UserShowController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +31,8 @@ Route::group(['prefix' => '/v1/user'], function () {
     Route::group(['middleware' => ['auth.jwt', 'user']], function () {
         Route::get('/logout', UserLogoutController::class)->name('user.logout');
 
-        Route::put('/user/edit', RegularUserEditController::class)->name('user.edit');
+        Route::get('/', UserShowController::class)->name('user.show');
+        Route::put('/edit', RegularUserEditController::class)->name('user.edit');
     });
 });
 
