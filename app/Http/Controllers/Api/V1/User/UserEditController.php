@@ -24,6 +24,7 @@ class UserEditController extends Controller
      *     tags={"User"},
      *     summary="Update a User account",
      *     description="Updates a User account",
+     *     security={{"bearerAuth":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\MediaType(
