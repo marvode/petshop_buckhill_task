@@ -18,7 +18,6 @@ class UserEditDto
     public function __construct(
         string $first_name,
         string $last_name,
-        string $email,
         string $password,
         string $address,
         string $phone_number,
@@ -27,7 +26,6 @@ class UserEditDto
     ) {
         $this->first_name = $first_name;
         $this->last_name = $last_name;
-        $this->email = $email;
         $this->password = $password;
         $this->address = $address;
         $this->phone_number = $phone_number;
@@ -40,7 +38,6 @@ class UserEditDto
         return new static(
             $request->first_name,
             $request->last_name,
-            $request->email,
             $request->password,
             $request->address,
             $request->phone_number,
