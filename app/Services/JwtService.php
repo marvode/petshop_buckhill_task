@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\User;
 use App\Interfaces\JwtServiceInterface;
+use DateInterval;
 use DateTimeImmutable;
 use Lcobucci\Clock\FrozenClock;
 use Lcobucci\JWT\Encoding\ChainedFormatter;
@@ -67,7 +68,7 @@ class JwtService implements JwtServiceInterface
             $token,
             new IssuedBy($this->issuer),
             new SignedWith(new Sha256(), $this->publicKey),
-            new ValidAt(new FrozenClock($exp))
+            new ValidAt(new FrozenClock($exp), DateInterval::createFromDateString('1 second'))
         );
     }
 }

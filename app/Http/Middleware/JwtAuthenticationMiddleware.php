@@ -43,7 +43,7 @@ class JwtAuthenticationMiddleware
 
         $claims = $this->jwtService->parseToken($jwt);
 
-        if ($this->jwtService->validateToken($jwt, $claims['exp'])) {
+        if (!$this->jwtService->validateToken($jwt, $claims['exp'])) {
             return $this->errorResponse(['Invalid JWT'], 401);
         }
 
