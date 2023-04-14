@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api\V1\User;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
@@ -35,7 +36,13 @@ class UserRegistrationControllerTest extends TestCase
 
         $response = $this->postJson(route('user.create'), $data);
 
+        $user = User::first();
+
         $response->assertCreated();
+        $this->assertFalse(!!$user->is_admin);
+        $this->assertDatabaseHas('users', [
+            'email' => $data['email']
+        ]);
         $response->assertJsonStructure([
             'data' => [
                 'uuid',
