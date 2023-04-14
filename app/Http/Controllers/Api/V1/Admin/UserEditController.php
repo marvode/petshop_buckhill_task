@@ -38,7 +38,7 @@ class UserEditController extends Controller
      *             mediaType="application/x-www-form-urlencoded",
      *             @OA\Schema(
      *                 type="object",
-     *                 required={"first_name", "last_name", "email", "password", "password_confirmation", "address", "phone_number"},
+     *                 required={"first_name", "last_name", "password", "password_confirmation", "address", "phone_number"},
      *                 @OA\Property(
      *                     property="first_name",
      *                     type="string",
@@ -48,11 +48,6 @@ class UserEditController extends Controller
      *                     property="last_name",
      *                     type="string",
      *                     description="User lastname"
-     *                 ),
-     *                 @OA\Property(
-     *                     property="email",
-     *                     type="string",
-     *                     description="User email"
      *                 ),
      *                 @OA\Property(
      *                     property="password",

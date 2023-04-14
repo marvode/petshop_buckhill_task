@@ -232,7 +232,6 @@
                                 "required": [
                                     "first_name",
                                     "last_name",
-                                    "email",
                                     "password",
                                     "password_confirmation",
                                     "address",
@@ -245,10 +244,6 @@
                                     },
                                     "last_name": {
                                         "description": "User lastname",
-                                        "type": "string"
-                                    },
-                                    "email": {
-                                        "description": "User email",
                                         "type": "string"
                                     },
                                     "password": {

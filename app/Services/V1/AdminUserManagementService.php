@@ -18,7 +18,6 @@ class AdminUserManagementService implements AdminUserManagementContract
         $user->update([
             'first_name' => $details->first_name,
             'last_name' => $details->last_name,
-            'email' => $details->email,
             'password' => Hash::make($details->password),
             'address' => $details->address,
             'phone_number' => $details->phone_number,
