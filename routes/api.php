@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\Admin\AdminRegistrationController;
 use App\Http\Controllers\Api\V1\Admin\UserDeleteController;
 use App\Http\Controllers\Api\V1\Admin\UserEditController;
 use App\Http\Controllers\Api\V1\Admin\UserListingController;
+use App\Http\Controllers\Api\V1\User\UserDeleteController as RegularUserDeleteController;
 use App\Http\Controllers\Api\V1\User\UserEditController as RegularUserEditController;
 use App\Http\Controllers\Api\V1\User\UserLoginController;
 use App\Http\Controllers\Api\V1\User\UserLogoutController;
@@ -33,6 +34,7 @@ Route::group(['prefix' => '/v1/user'], function () {
 
         Route::get('/', UserShowController::class)->name('user.show');
         Route::put('/edit', RegularUserEditController::class)->name('user.edit');
+        Route::delete('/delete', RegularUserDeleteController::class)->name('user.delete');
     });
 });
 

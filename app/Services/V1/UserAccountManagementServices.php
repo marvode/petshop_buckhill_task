@@ -33,4 +33,11 @@ class UserAccountManagementServices implements UserAccountManagementContract
 
         return $user;
     }
+
+    public function delete(string $loggedInUserUuid): void
+    {
+        $user = RegularUser::where('uuid', $loggedInUserUuid)->firstOrFail();
+
+        $user->delete();
+    }
 }
